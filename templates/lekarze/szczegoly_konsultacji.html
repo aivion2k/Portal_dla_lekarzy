@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+.wiadomosci-container {
+    max-height: 300px;
+    min-height: 300px;
+    overflow-y: auto;
+}
+
+.pliki-container {
+    max-height: 90px;
+    min-height: 90px;
+    overflow-y: auto;
+}
+
+.custom-textarea {
+    height: 100px;
+    resize: none;
+}
+</style>
+
+<script>
+    window.onload = function() {
+        var wiadomosciContainer = document.querySelector('.wiadomosci-container');
+        var plikiContainer = document.querySelector('.pliki-container');
+        if (wiadomosciContainer) {
+            wiadomosciContainer.scrollTop = wiadomosciContainer.scrollHeight;
+        }
+        if (plikiContainer) {
+            plikiContainer.scrollTop = plikiContainer.scrollHeight;
+        }
+    }
+</script>
+
+
+
+<div class="container">
+    <h2>Konsultacja z dnia {{ konsultacja.data_konsultacji }}</h2>
+    <p>{{ konsultacja }}</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post">
+                {% csrf_token %}
+                {{ wiadomosc_form.as_p }}
+                <button type="submit" name="submit_wiadomosc" class="btn btn-primary">Wyślij Wiadomość</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Wiadomości</h3>
+            <div class="wiadomosci-container">
+                {% for wiadomosc in wiadomosci %}
+                <div>
+                    <strong>{{ wiadomosc.nadawca.get_full_name }}</strong> ({{ wiadomosc.data_wyslania }}):
+                    <p>{{ wiadomosc.tresc }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ plik_form.as_p }}
+                <button type="submit" name="submit_plik" class="btn btn-secondary">Prześlij Plik</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Pliki</h3>
+            <div class="pliki-container">
+                {% for plik in pliki %}
+                <li><a href="{{ plik.plik.url }}">{{ plik.plik.name }}</a> ({{ plik.data_wyslania }})</li>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-12 text-center">
+            {% if request.user.jest_lekarzem %}
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" name="zrealizuj_konsultacje" class="btn btn-success me-2">Zrealizuj i archiwizuj</button>
+                </form>
+                <form method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" name="usun_konsultacje" class="btn btn-danger">Usuń</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

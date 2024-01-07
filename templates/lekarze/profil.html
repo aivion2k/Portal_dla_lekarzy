@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Profil Lekarza</h2>
+    <p>Imię: {{ lekarz.imie }}</p>
+    <p>Nazwisko: {{ lekarz.nazwisko }}</p>
+    <p>Specjalizacja: {{ lekarz.specjalizacja }}</p>
+    <p>Numer PWZ: {{ lekarz.numer_pwz }}</p>
+
+    <a href="{% url 'edytuj_profil_lekarza' %}" class="btn btn-info">Edytuj Profil</a>
+    <a href="{% url 'dodaj_konsultacje' %}" class="btn btn-primary">Dodaj Konsultację</a>
+
+    <h3 class="mt-4">Konsultacje</h3>
+    <ul>
+        {% for konsultacja in konsultacje %}
+        <li>
+            Pacjent: {{ konsultacja.pacjent }} - Data: {{ konsultacja.data_konsultacji|date:"d M Y H:i" }}
+            <br>Opis: {{ konsultacja.opis_problemu }}
+            <a href="{% url 'szczegoly_konsultacji' konsultacja.id %}">Zobacz szczegóły</a>
+        </li>
+        {% empty %}
+        <li>Brak zaplanowanych konsultacji</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

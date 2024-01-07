@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center">Witaj w Portalu dla Lekarzy</h1>
+
+    <div class="text-center mt-4">
+        {% if user.is_authenticated %}
+            <p>Jesteś zalogowany jako: <strong>{{ user.username }}</strong></p>
+            {% if user.jest_lekarzem %}
+                <a href="{% url 'profil_lekarza' %}" class="btn btn-primary">Przejdź do profilu</a>
+            {% else %}
+                <a href="{% url 'profil_pacjenta' %}" class="btn btn-primary">Przejdź do profilu</a>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-success">Logowanie</a>
+            <a href="{% url 'register_as_lekarz' %}" class="btn btn-info">Rejestracja Lekarza</a>
+            <a href="{% url 'register_as_pacjent' %}" class="btn btn-info">Rejestracja Pacjenta</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

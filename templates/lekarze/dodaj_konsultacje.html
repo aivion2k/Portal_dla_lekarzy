@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Dodaj Konsultację</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ search_form.as_p }}
+        <button type="submit" class="btn btn-primary">Wyszukaj Pacjenta</button>
+    </form>
+    <hr>
+    {% if konsultacja_form %}
+    <form method="post">
+        {% csrf_token %}
+        {{ konsultacja_form.as_p }}
+        <input type="hidden" name="add_konsultacja" value="1">
+        <button type="submit" class="btn btn-success">Dodaj Konsultację</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
