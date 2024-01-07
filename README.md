@@ -5,7 +5,6 @@ Projekt powstał na potrzeby przedmiotu TELM. Całość napisana została w Pyth
 ### Pobranie i przygotowanie projektu
 ```
 git clone https://github.com/aivion2k/Portal_dla_lekarzy.git
-cd Portal_dla_lekarzy
 pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
