@@ -6,6 +6,7 @@ from .models import User
 
 class LekarzRegistrationForm(UserCreationForm):
 
+    # Dodany komentarz
     numer_pwz = forms.CharField(max_length=7, min_length=7, help_text='Podaj ważny numer PWZ.')
     specjalizacja = forms.CharField(max_length=100)
 
