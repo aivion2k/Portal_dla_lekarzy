@@ -23,6 +23,13 @@
         overflow-y: auto;
     }
 
+    .konsultacje-container {
+    max-height: 300px; /* możesz dostosować tę wartość */
+    min-height: 300px;
+    overflow-y: auto;
+    }
+
+
     .custom-textarea {
         height: 100px;
         resize: none;
@@ -38,6 +45,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto"> {# Użyj ml-auto dla elementów po prawej stronie #}
             {% if user.is_authenticated %}
+                {% if request.user.jest_lekarzem %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profil_lekarza' %}">Przejdź do profilu</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profil_pacjenta' %}">Przejdź do profilu</a>
+                    </li>
+                {% endif %}
                 <li class="nav-item">
                     <form action="{% url 'logout' %}" method="post">
                         {% csrf_token %}
