@@ -34,9 +34,9 @@ def dodaj_konsultacje(request):
     pacjent_znaleziony = False
 
     if search_form.is_valid():
-        pesel = search_form.cleaned_data['pesel']
+        PESEL = search_form.cleaned_data['PESEL']
         try:
-            pacjent = Pacjent.objects.get(pesel=pesel)
+            pacjent = Pacjent.objects.get(PESEL=PESEL)
             pacjent_znaleziony = True
             konsultacja_form = KonsultacjaForm(initial={'pacjent': pacjent.id})
         except Pacjent.DoesNotExist:

@@ -6,7 +6,7 @@ class Pacjent(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
     imie = models.CharField(max_length=100, default='')
     nazwisko = models.CharField(max_length=100, default='')
-    pesel = models.CharField(max_length=11)
+    PESEL = models.CharField(max_length=11)
 
     def __str__(self):
         return f"{self.imie} {self.nazwisko}"

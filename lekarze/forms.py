@@ -19,7 +19,7 @@ class EdytujProfilLekarzaForm(forms.ModelForm):
 
 
 class WyszukajPacjentaForm(forms.Form):
-    pesel = forms.CharField(label='PESEL', max_length=11)
+    PESEL = forms.CharField(label='PESEL', max_length=11)
 
 
 class PlikForm(forms.ModelForm):
