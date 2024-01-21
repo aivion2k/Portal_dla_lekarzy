@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container mt-4">
-    <h2>Dodaj Konsultację</h2>
+    <h2 style="color:#323B3B">Dodaj Konsultację</h2>
     <form method="post">
         {% csrf_token %}
         {{ search_form.as_p }}
-        <button type="submit" class="btn btn-primary">Wyszukaj Pacjenta</button>
+        <button type="submit" class="btn btn-primary" style="background-color:#0FA59A">Wyszukaj Pacjenta</button>
     </form>
     <hr>
     {% if konsultacja_form %}

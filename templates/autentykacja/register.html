@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h2>Rejestracja</h2>
+<h2 style="color:#323B3B">Rejestracja</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Zarejestruj się</button>
+    <button type="submit" style="background-color:#D3DBDA">Zarejestruj się</button>
 </form>
 
 {% endblock %}

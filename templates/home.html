@@ -2,20 +2,20 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h1 class="text-center">Witaj w Portalu dla Lekarzy</h1>
+    <h1 style="color:#323B3B" class="text-center">Witaj w Portalu dla Lekarzy</h1>
 
     <div class="text-center mt-4">
         {% if user.is_authenticated %}
-            <p>Jesteś zalogowany jako: <strong>{{ user.username }}</strong></p>
+            <p style="color:#323B3B" >Jesteś zalogowany jako: <strong>{{ user.username }}</strong></p>
             {% if user.jest_lekarzem %}
-                <a href="{% url 'profil_lekarza' %}" class="btn btn-primary">Przejdź do profilu</a>
+                <a href="{% url 'profil_lekarza' %}" class="btn btn-primary" style="background-color:#0FA59A">Przejdź do profilu</a>
             {% else %}
-                <a href="{% url 'profil_pacjenta' %}" class="btn btn-primary">Przejdź do profilu</a>
+                <a href="{% url 'profil_pacjenta' %}" class="btn btn-primary" style="background-color:#0FA59A">Przejdź do profilu</a>
             {% endif %}
         {% else %}
-            <a href="{% url 'login' %}" class="btn btn-success">Logowanie</a>
-            <a href="{% url 'register_as_lekarz' %}" class="btn btn-info">Rejestracja Lekarza</a>
-            <a href="{% url 'register_as_pacjent' %}" class="btn btn-info">Rejestracja Pacjenta</a>
+            <a href="{% url 'login' %}" class="btn btn-success" style="background-color:#0FA59A">Logowanie</a>
+            <a href="{% url 'register_as_lekarz' %}" class="btn btn-info" style="background-color:#73E8E7">Rejestracja Lekarza</a>
+            <a href="{% url 'register_as_pacjent' %}" class="btn btn-info" style="background-color:#73E8E7">Rejestracja Pacjenta</a>
         {% endif %}
     </div>
 </div>

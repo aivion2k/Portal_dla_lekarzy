@@ -2,11 +2,11 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Edytuj Profil</h2>
+    <h2 style="color:#323B3B">Edytuj Profil</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+        <button type="submit" class="btn btn-primary" style="background-color:#0FA59A">Zapisz zmiany</button>
     </form>
 </div>
 {% endblock %}
