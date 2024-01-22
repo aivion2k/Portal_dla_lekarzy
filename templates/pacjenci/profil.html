@@ -2,16 +2,16 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Profil Pacjenta</h2>
+    <h2 style="color:#323B3B">Profil Pacjenta</h2>
     <p>Imię: {{ pacjent.imie }}</p>
     <p>Nazwisko: {{ pacjent.nazwisko }}</p>
-    <p>PESEL: {{ pacjent.pesel }}</p>
+    <p>PESEL: {{ pacjent.PESEL }}</p>
 
-    <a href="{% url 'edytuj_profil_pacjenta' %}" class="btn btn-info">Edytuj Profil</a>
+    <a href="{% url 'edytuj_profil_pacjenta' %}" class="btn btn-info" style="background-color:#73E8E7">Edytuj Profil</a>
 
-    <h3>Konsultacje</h3>
+    <h3 style="color:#323B3B">Konsultacje</h3>
     <div class="konsultacje-container">
-        <ul>
+        <ul style="color:#323B3B">
             {% for konsultacja in konsultacje %}
             <li>
                 Data: {{ konsultacja.data_konsultacji|date:"d M Y H:i" }}

@@ -25,7 +25,7 @@ def register_as_pacjent(request):
             user = form.save(commit=False)
             user.jest_pacjentem = True
             user.save()
-            Pacjent.objects.create(user=user, pesel=form.cleaned_data['pesel'])
+            Pacjent.objects.create(user=user, PESEL=form.cleaned_data['PESEL'])
             return redirect('home')
     else:
         form = PacjentRegistrationForm()

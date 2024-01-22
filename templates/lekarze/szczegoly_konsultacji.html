@@ -17,7 +17,7 @@
 
 
 <div class="container">
-    <h2>Konsultacja z dnia {{ konsultacja.data_konsultacji }}</h2>
+    <h2 style="color:#323B3B">Konsultacja z dnia {{ konsultacja.data_konsultacji }}</h2>
     <p>{{ konsultacja }}</p>
 
     <div class="row">
@@ -25,15 +25,15 @@
             <form method="post">
                 {% csrf_token %}
                 {{ wiadomosc_form.as_p }}
-                <button type="submit" name="submit_wiadomosc" class="btn btn-primary">Wyślij Wiadomość</button>
+                <button type="submit" name="submit_wiadomosc" class="btn btn-primary" style="background-color:#0FA59A">Wyślij Wiadomość</button>
             </form>
         </div>
         <div class="col-md-6">
-            <h3>Wiadomości</h3>
+            <h3 style="color:#323B3B">Wiadomości</h3>
             <div class="wiadomosci-container">
                 {% for wiadomosc in wiadomosci %}
                 <div>
-                    <strong>{{ wiadomosc.nadawca.get_full_name }}</strong> ({{ wiadomosc.data_wyslania }}):
+                    <strong style="color:#323B3B">{{ wiadomosc.nadawca.get_full_name }}</strong> ({{ wiadomosc.data_wyslania }}):
                     <p>{{ wiadomosc.tresc }}</p>
                 </div>
                 {% endfor %}
@@ -50,7 +50,7 @@
             </form>
         </div>
         <div class="col-md-6">
-            <h3>Pliki</h3>
+            <h3 style="color:#323B3B">Pliki</h3>
             <div class="pliki-container">
                 {% for plik in pliki %}
                 <li><a href="{{ plik.plik.url }}">{{ plik.plik.name }}</a> ({{ plik.data_wyslania }})</li>
